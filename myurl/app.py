@@ -18,8 +18,10 @@ def api_get_url():
    url_receive = list(db.url.find({}, {"_id": False}))
 
    return jsonify(
-      {'url_list': url_receive},
-      {'result': 'success'}
+      {
+         'url_list': url_receive,
+         'result': 'success'
+      }
    )
 
 @app.route('/url/insert', methods=['POST'])

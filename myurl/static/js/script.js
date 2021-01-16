@@ -1,26 +1,3 @@
-new Vue ({
-	el: '#taskList',
-	data: {
-		title: 'to do list',
-		tasks: [
-			{ name: 'Start a new pen' },
-			{ name: 'Read a book' },
-			{ name: 'Meeting with team' }
-		]
-	},
-	methods: {
-		newItem: function() {
-			if (!this.tasks.name) {
-				return
-			}
-			this.tasks.push ( {
-				name: this.tasks.name,
-				del: ''
-			});
-      this.tasks.name = "";
-		},
-	}
-})
 function url_get() {
 	$.ajax({
 		type: "GET",
@@ -46,11 +23,11 @@ function append_url(url, url_info, url_meta_image, url_meta_title, url_meta_desc
 	<label id="url-table" class="task-list-item-label">
 		<table>
 			<tr>
-				<td>${url}</td>
-				<td>${url_info}</td>
+				<td class="url_name_hide">${url}</td>
+				<td class="url_name_hide">${url_info}</td>
 				<td>${url_meta_image}</td>
-				<td>${url_meta_title}</td>
-				<td>${url_meta_description}</td>
+				<td class="url_name_hide">${url_meta_title}</td>
+				<td class="url_name_hide">${url_meta_description}</td>
 			</tr>
 		</table>
 	</label>
@@ -58,13 +35,23 @@ function append_url(url, url_info, url_meta_image, url_meta_title, url_meta_desc
 </li>
 
 	`
-	$('#').append(temp_html)
+	$('#url_list').append(temp_html)
 }
 
 function url_insert() {
-	let url_give = $('#url_s').val();
-	let url_info_give = $('#url').val();
+	let url_give = $('#url_site').val();
+	let url_info_give = $('#url_info').val();
 	$.ajax({
-
+		type: "POST",
+		url: "/url/insert",
+		data: {
+			'url_give': url_give,
+			'url_info_give': url_info_give
+		},
+		success: function (response) {
+			if(response["result" == "success"]) {
+				window.location.reload();
+			}
+		}
 	})
 }

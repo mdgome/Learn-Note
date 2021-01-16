@@ -137,6 +137,13 @@ ul {
   cursor: pointer;
 }
 
+.url_name_hide {
+  display: inline-block;
+  width: 200;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .delete-btn {
   margin-left: auto;
   display: block;
