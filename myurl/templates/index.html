@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta charset='UTF-8'>
+  <title>내가 즐겨찾는 URL</title>
+
+<link href="{{ url_for('static', filename='CSS/style.css') }}" rel = "stylesheet">
+<srcipt src="{{ url_for('static', filename='js/script.js') }}" ></srcipt>
+
+<!-- ajax  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="app-container">
+  <h1 class="app-header">즐겨찾기한 URL</h1>
+  <div class="add-task">
+    <input type="text" autocomplete="off" placeholder="URL 입력하기"  class="task-input">
+    <input type="text" autocomplete="off" placeholder="URL 설명"   class="task-input">
+    <input type="submit" onclick="url_insert()" value="" class="submit-task"  title="Add Task">
+  </div>
+  <ul class="task-list">
+		<li class="task-list-item" >
+			<label id="url-table" class="task-list-item-label">
+        <table>
+          <tr>
+            <td>url test</td>
+            <td>url info test</td>
+            <td>url meta_title</td>
+            <td>url meta image</td>
+            <td>url meta description</td>
+          </tr>
+        </table>
+			</label>
+            <span onclick="delete_url()" class="delete-btn" title="Delete Task"></span>
+		</li>
+	</ul>
+</div>
+
+</body>
+
+</html>
